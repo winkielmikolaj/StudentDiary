@@ -90,7 +90,7 @@
             dgvDiary.Size = new Size(776, 397);
             dgvDiary.TabIndex = 4;
             // 
-            // Form1
+            // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -101,7 +101,7 @@
             Controls.Add(btnDelete);
             Controls.Add(btnEdit);
             Controls.Add(btnAdd);
-            Name = "Form1";
+            Name = "Main";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dgvDiary).EndInit();
             ResumeLayout(false);
