@@ -9,36 +9,41 @@ namespace StudentDiary
     {
         private string _filePath = $@"{Environment.CurrentDirectory}\students.txt";
 
+        private FileHeleper<List<Student>> _fileHeleper =
+            new FileHeleper<List<Student>>(Path.Combine(Environment.CurrentDirectory, "student.txt"));
+
         public Main()
         {
             InitializeComponent();
-            //list containing all students
+
+            RefreshDiary();
+
+            SetColumnHeaders();
+
+            //MessageBox.Show("Welcome to StudentDiary!");
+
+            
+        }
+
+        private void RefreshDiary()
+        {
             var students = DeserializerFromFile();
 
             dgvDiary.DataSource = students;
-
-            //var students = new List<Student>();
-            //students.Add(new Student() { FirstName = "Jan" });
-            //students.Add(new Student() { FirstName = "Marek" });
-            //students.Add(new Student() { FirstName = "Gregory" });
-
             SerializeToFile(students);
+        }
 
-            var path = $@"{Path.GetDirectoryName(Application.ExecutablePath)}\..\NowyPlik2.txt";
-
-            //if (!File.Exists(path))
-            //{
-            //    //your own path with project
-            //    File.Create(path);
-            //}
-
-            //File.Delete(path);
-            //File.WriteAllText(path, "Hello World!");
-            File.AppendAllText(path, "Witaj Œwiecie!\n");
-
-            //var text = File.ReadAllText(path);
-
-            MessageBox.Show("Welcome to StudentDiary!");
+        private void SetColumnHeaders()
+        {
+            dgvDiary.Columns[0].HeaderText = "Number";
+            dgvDiary.Columns[1].HeaderText = "First Name";
+            dgvDiary.Columns[2].HeaderText = "Last Name";
+            dgvDiary.Columns[3].HeaderText = "Comments";
+            dgvDiary.Columns[4].HeaderText = "Math";
+            dgvDiary.Columns[5].HeaderText = "Technology";
+            dgvDiary.Columns[6].HeaderText = "Physics";
+            dgvDiary.Columns[7].HeaderText = "Language1";
+            dgvDiary.Columns[8].HeaderText = "Language2";
         }
 
         //public void SerializeToFile1(List<Student> students)
@@ -146,7 +151,7 @@ namespace StudentDiary
                 var students = DeserializerFromFile();
                 students.RemoveAll(x => x.Id == Convert.ToInt32(selectedStudent.Cells[0].Value));
                 SerializeToFile(students);
-                dgvDiary.DataSource = students;
+                RefreshDiary();
             }
 
         }
@@ -154,7 +159,12 @@ namespace StudentDiary
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             var students = DeserializerFromFile();
-            dgvDiary.DataSource = students;
+            RefreshDiary();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

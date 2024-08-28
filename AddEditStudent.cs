@@ -24,6 +24,8 @@ namespace StudentDiary
 
             if (id != 0)
             {
+                Text = "Editing student";
+
                 var students = DeserializerFromFile();
                 var student = students.FirstOrDefault(x => x.Id == id);
 

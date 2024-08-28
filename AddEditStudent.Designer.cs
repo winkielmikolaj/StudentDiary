@@ -244,8 +244,11 @@
             Controls.Add(tbFirstName);
             Controls.Add(lbId);
             Controls.Add(tbId);
+            MaximumSize = new Size(362, 448);
+            MinimumSize = new Size(362, 448);
             Name = "AddEditStudent";
-            Text = "AddEditStudent";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Adding student";
             ResumeLayout(false);
             PerformLayout();
         }
