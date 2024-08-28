@@ -110,6 +110,44 @@ namespace StudentDiary
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            //if (dgvDiary.SelectedRows.Count == 0)
+            //{
+            //    MessageBox.Show("Please select a student which you want to edit");
+
+            //    return;
+            //}
+
+            //var selectedStudent = dgvDiary.SelectedRows[0];
+
+            //var confirmDelete = MessageBox.Show($"Are you sure you want to delete a student");
+            //{
+            //    (selectedStudent.Cells[1].Value.ToString() + " " +
+            //        selectedStudent.Cells[2].Value.ToString()).Trim();
+            //}
+            //MessageBoxButtons.OKCancel;
+            //);
+            var selectedStudent = dgvDiary.SelectedRows[0];
+
+            // Pobranie imienia i nazwiska studenta z wybranych komórek
+            var studentName = (selectedStudent.Cells[1].Value.ToString() + " " +
+                               selectedStudent.Cells[2].Value.ToString()).Trim();
+
+            // Wyœwietlenie komunikatu potwierdzaj¹cego usuniêcie
+            var confirmDelete = MessageBox.Show(
+                $"Are you sure you want to delete the student {selectedStudent.Cells[1].Value.ToString()} {selectedStudent.Cells[2].Value.ToString()}?",
+                "Confirm Delete",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning
+            );
+
+            // Sprawdzenie odpowiedzi u¿ytkownika
+            if (confirmDelete == DialogResult.OK)
+            {
+                var students = DeserializerFromFile();
+                students.RemoveAll(x => x.Id == Convert.ToInt32(selectedStudent.Cells[0].Value));
+                SerializeToFile(students);
+                dgvDiary.DataSource = students;
+            }
 
         }
 
