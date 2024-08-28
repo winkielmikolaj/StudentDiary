@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using System.IO;
 using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -90,7 +91,15 @@ namespace StudentDiary
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (dgvDiary.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a student which you want to edit");
 
+                return;
+            }
+
+            var addEditStudent = new AddEditStudent(Convert.ToInt32(dgvDiary.SelectedRows[0].Cells[0].Value));
+            addEditStudent.ShowDialog();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -106,7 +115,8 @@ namespace StudentDiary
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
+            var students = DeserializerFromFile();
+            dgvDiary.DataSource = students;
         }
     }
 }

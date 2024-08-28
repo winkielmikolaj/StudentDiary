@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            tbId = new TextBox();
             lbId = new Label();
             lbFirstName = new Label();
             tbFirstName = new TextBox();
@@ -50,14 +50,14 @@
             btnConfirm = new Button();
             SuspendLayout();
             // 
-            // textBox1
+            // tbId
             // 
-            textBox1.Location = new Point(101, 33);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(223, 23);
-            textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+            tbId.Location = new Point(101, 33);
+            tbId.Name = "tbId";
+            tbId.ReadOnly = true;
+            tbId.Size = new Size(223, 23);
+            tbId.TabIndex = 0;
+            tbId.TextChanged += textBox1_TextChanged;
             // 
             // lbId
             // 
@@ -184,7 +184,7 @@
             // 
             // rtbComments
             // 
-            rtbComments.Location = new Point(101, 266);
+            rtbComments.Location = new Point(101, 263);
             rtbComments.Name = "rtbComments";
             rtbComments.Size = new Size(223, 99);
             rtbComments.TabIndex = 16;
@@ -243,7 +243,7 @@
             Controls.Add(lbFirstName);
             Controls.Add(tbFirstName);
             Controls.Add(lbId);
-            Controls.Add(textBox1);
+            Controls.Add(tbId);
             Name = "AddEditStudent";
             Text = "AddEditStudent";
             ResumeLayout(false);
@@ -252,7 +252,7 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox tbId;
         private Label lbId;
         private Label lbFirstName;
         private TextBox tbFirstName;
