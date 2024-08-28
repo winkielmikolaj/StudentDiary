@@ -12,12 +12,16 @@ namespace StudentDiary
         {
             InitializeComponent();
             //list containing all students
-            var students = new List<Student>();
-            students.Add(new Student() { FirstName = "Jan" });
-            students.Add(new Student() { FirstName = "Marek" });
-            students.Add(new Student() { FirstName = "Gregory" });
+            var students = DeserializerFromFile();
 
-            SerializeToFile2(students);
+            dgvDiary.DataSource = students;
+
+            //var students = new List<Student>();
+            //students.Add(new Student() { FirstName = "Jan" });
+            //students.Add(new Student() { FirstName = "Marek" });
+            //students.Add(new Student() { FirstName = "Gregory" });
+
+            SerializeToFile(students);
 
             var path = $@"{Path.GetDirectoryName(Application.ExecutablePath)}\..\NowyPlik2.txt";
 
@@ -56,7 +60,7 @@ namespace StudentDiary
         //    }
         //}
 
-        public void SerializeToFile2(List<Student> students)
+        public void SerializeToFile(List<Student> students)
         {
             var serializer = new XmlSerializer(typeof(List<Student>));
 
@@ -91,7 +95,8 @@ namespace StudentDiary
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            var addEditStudent = new AddEditStudent();
+            addEditStudent.ShowDialog();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

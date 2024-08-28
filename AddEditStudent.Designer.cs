@@ -31,19 +31,19 @@
             textBox1 = new TextBox();
             lbId = new Label();
             lbFirstName = new Label();
-            textBox2 = new TextBox();
-            lbSecondName = new Label();
-            textBox3 = new TextBox();
+            tbFirstName = new TextBox();
+            lbLastName = new Label();
+            tbLastName = new TextBox();
             lbMath = new Label();
-            textBox4 = new TextBox();
+            tbMath = new TextBox();
             lbTechClass = new Label();
-            textBox5 = new TextBox();
+            tbTech = new TextBox();
             lbPhysics = new Label();
-            textBox6 = new TextBox();
+            tbPhysics = new TextBox();
             lbLang1 = new Label();
-            textBox7 = new TextBox();
+            tbLan1 = new TextBox();
             lbLang2 = new Label();
-            textBox8 = new TextBox();
+            tbLan2 = new TextBox();
             rtbComments = new RichTextBox();
             lbComments = new Label();
             btnCancel = new Button();
@@ -78,29 +78,29 @@
             lbFirstName.TabIndex = 3;
             lbFirstName.Text = "First Name:";
             // 
-            // textBox2
+            // tbFirstName
             // 
-            textBox2.Location = new Point(101, 62);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(223, 23);
-            textBox2.TabIndex = 2;
+            tbFirstName.Location = new Point(101, 62);
+            tbFirstName.Name = "tbFirstName";
+            tbFirstName.Size = new Size(223, 23);
+            tbFirstName.TabIndex = 2;
             // 
-            // lbSecondName
+            // lbLastName
             // 
-            lbSecondName.AutoSize = true;
-            lbSecondName.Location = new Point(12, 94);
-            lbSecondName.Name = "lbSecondName";
-            lbSecondName.Size = new Size(84, 15);
-            lbSecondName.TabIndex = 5;
-            lbSecondName.Text = "Second Name:";
+            lbLastName.AutoSize = true;
+            lbLastName.Location = new Point(12, 94);
+            lbLastName.Name = "lbLastName";
+            lbLastName.Size = new Size(66, 15);
+            lbLastName.TabIndex = 5;
+            lbLastName.Text = "Last Name:";
             // 
-            // textBox3
+            // tbLastName
             // 
-            textBox3.Location = new Point(101, 91);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(223, 23);
-            textBox3.TabIndex = 4;
-            textBox3.TextChanged += textBox3_TextChanged;
+            tbLastName.Location = new Point(101, 91);
+            tbLastName.Name = "tbLastName";
+            tbLastName.Size = new Size(223, 23);
+            tbLastName.TabIndex = 4;
+            tbLastName.TextChanged += textBox3_TextChanged;
             // 
             // lbMath
             // 
@@ -111,12 +111,12 @@
             lbMath.TabIndex = 7;
             lbMath.Text = "Math:";
             // 
-            // textBox4
+            // tbMath
             // 
-            textBox4.Location = new Point(101, 120);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(223, 23);
-            textBox4.TabIndex = 6;
+            tbMath.Location = new Point(101, 120);
+            tbMath.Name = "tbMath";
+            tbMath.Size = new Size(223, 23);
+            tbMath.TabIndex = 6;
             // 
             // lbTechClass
             // 
@@ -127,12 +127,12 @@
             lbTechClass.TabIndex = 9;
             lbTechClass.Text = "Tech Class:";
             // 
-            // textBox5
+            // tbTech
             // 
-            textBox5.Location = new Point(101, 149);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(223, 23);
-            textBox5.TabIndex = 8;
+            tbTech.Location = new Point(101, 149);
+            tbTech.Name = "tbTech";
+            tbTech.Size = new Size(223, 23);
+            tbTech.TabIndex = 8;
             // 
             // lbPhysics
             // 
@@ -143,12 +143,12 @@
             lbPhysics.TabIndex = 11;
             lbPhysics.Text = "Physics:";
             // 
-            // textBox6
+            // tbPhysics
             // 
-            textBox6.Location = new Point(101, 178);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(223, 23);
-            textBox6.TabIndex = 10;
+            tbPhysics.Location = new Point(101, 178);
+            tbPhysics.Name = "tbPhysics";
+            tbPhysics.Size = new Size(223, 23);
+            tbPhysics.TabIndex = 10;
             // 
             // lbLang1
             // 
@@ -159,12 +159,12 @@
             lbLang1.TabIndex = 13;
             lbLang1.Text = "Language 1:";
             // 
-            // textBox7
+            // tbLan1
             // 
-            textBox7.Location = new Point(101, 207);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(223, 23);
-            textBox7.TabIndex = 12;
+            tbLan1.Location = new Point(101, 207);
+            tbLan1.Name = "tbLan1";
+            tbLan1.Size = new Size(223, 23);
+            tbLan1.TabIndex = 12;
             // 
             // lbLang2
             // 
@@ -175,12 +175,12 @@
             lbLang2.TabIndex = 15;
             lbLang2.Text = "Language 2:";
             // 
-            // textBox8
+            // tbLan2
             // 
-            textBox8.Location = new Point(101, 237);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(223, 23);
-            textBox8.TabIndex = 14;
+            tbLan2.Location = new Point(101, 237);
+            tbLan2.Name = "tbLan2";
+            tbLan2.Size = new Size(223, 23);
+            tbLan2.TabIndex = 14;
             // 
             // rtbComments
             // 
@@ -229,19 +229,19 @@
             Controls.Add(lbComments);
             Controls.Add(rtbComments);
             Controls.Add(lbLang2);
-            Controls.Add(textBox8);
+            Controls.Add(tbLan2);
             Controls.Add(lbLang1);
-            Controls.Add(textBox7);
+            Controls.Add(tbLan1);
             Controls.Add(lbPhysics);
-            Controls.Add(textBox6);
+            Controls.Add(tbPhysics);
             Controls.Add(lbTechClass);
-            Controls.Add(textBox5);
+            Controls.Add(tbTech);
             Controls.Add(lbMath);
-            Controls.Add(textBox4);
-            Controls.Add(lbSecondName);
-            Controls.Add(textBox3);
+            Controls.Add(tbMath);
+            Controls.Add(lbLastName);
+            Controls.Add(tbLastName);
             Controls.Add(lbFirstName);
-            Controls.Add(textBox2);
+            Controls.Add(tbFirstName);
             Controls.Add(lbId);
             Controls.Add(textBox1);
             Name = "AddEditStudent";
@@ -255,19 +255,19 @@
         private TextBox textBox1;
         private Label lbId;
         private Label lbFirstName;
-        private TextBox textBox2;
-        private Label lbSecondName;
-        private TextBox textBox3;
+        private TextBox tbFirstName;
+        private Label lbLastName;
+        private TextBox tbLastName;
         private Label lbMath;
-        private TextBox textBox4;
+        private TextBox tbMath;
         private Label lbTechClass;
-        private TextBox textBox5;
+        private TextBox tbTech;
         private Label lbPhysics;
-        private TextBox textBox6;
+        private TextBox tbPhysics;
         private Label lbLang1;
-        private TextBox textBox7;
+        private TextBox tbLan1;
         private Label lbLang2;
-        private TextBox textBox8;
+        private TextBox tbLan2;
         private RichTextBox rtbComments;
         private Label lbComments;
         private Button btnCancel;
