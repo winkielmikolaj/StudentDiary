@@ -42,6 +42,8 @@ namespace StudentDiary
                 tbLan2.Text = student.Language2;
                 rtbComments.Text = student.Comments;
             }
+
+            tbFirstName.Select();
         }
 
         public void SerializeToFile(List<Student> students)
@@ -81,42 +83,57 @@ namespace StudentDiary
         {
             var students = DeserializerFromFile();
 
+            // Tryb edycji - jeśli _studentId nie jest zerem, aktualizujemy istniejącego studenta
             if (_studentId != 0)
             {
-                students.RemoveAll(x => x.Id == _studentId);
+                // Znajdź istniejącego studenta po ID
+                var existingStudent = students.FirstOrDefault(x => x.Id == _studentId);
+                if (existingStudent != null)
+                {
+                    // Aktualizuj właściwości istniejącego studenta
+                    existingStudent.FirstName = tbFirstName.Text;
+                    existingStudent.LastName = tbLastName.Text;
+                    existingStudent.Math = tbMath.Text;
+                    existingStudent.Tech = tbTech.Text;
+                    existingStudent.Physics = tbPhysics.Text;
+                    existingStudent.Language1 = tbLan1.Text;
+                    existingStudent.Language2 = tbLan2.Text;
+                    existingStudent.Comments = rtbComments.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Student not found for editing.");
+                    return;
+                }
             }
             else
             {
+                // Tryb dodawania - tworzymy nowego studenta
                 var studentWithHighestId = students.OrderByDescending(x => x.Id).FirstOrDefault();
+                int newStudentId = (studentWithHighestId != null) ? studentWithHighestId.Id + 1 : 1; // Ustal nowe ID
 
-                var studentId = 0;
-                if (studentWithHighestId == null)
+                // Utwórz nowego studenta z wartościami z formularza
+                var newStudent = new Student
                 {
-                    studentId = studentWithHighestId.Id + 1;
-                }
+                    Id = newStudentId,
+                    FirstName = tbFirstName.Text,
+                    LastName = tbLastName.Text,
+                    Math = tbMath.Text,
+                    Tech = tbTech.Text,
+                    Physics = tbPhysics.Text,
+                    Language1 = tbLan1.Text,
+                    Language2 = tbLan2.Text,
+                    Comments = rtbComments.Text,
+                };
+
+                students.Add(newStudent);
             }
-            //nie mam pojecia co to jest to na dole jakby co, ale wiem ze to to samo co ten if wyzej
-            //var studentId = studentWithHighestId == null ? 1 : studentWithHighestId.Id;
 
-            var student = new Student
-            {
-                Id = _studentId,
-                FirstName = tbFirstName.Text,
-                LastName = tbLastName.Text,
-                Math = tbMath.Text,
-                Tech = tbTech.Text,
-                Physics = tbPhysics.Text,
-                Language1 = tbLan1.Text,
-                Language2 = tbLan2.Text,
-                Comments = rtbComments.Text,
-            };
-
-            students.Add(student);
-
+            // Zapisz zaktualizowaną listę studentów do pliku
             SerializeToFile(students);
-
             Close();
         }
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
